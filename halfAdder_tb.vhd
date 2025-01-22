@@ -62,7 +62,7 @@ begin
 	-- Test Plan Process --------------------------------
 	-- Implement the test plan here.  Body of process is continuously from time = 0  
 	test_process : process 
-	begin
+	begin 
 	
 		 w_sw1 <= '0'; w_sw0 <= '0'; wait for 10 ns;
 		    -- read as "check that w_lec0 = '0' and if it doesn't then give the message 'bad sum' with an error."
@@ -74,7 +74,9 @@ begin
 		 w_sw1 <= '1'; w_sw0 <= '0'; wait for 10 ns;
             assert w_led0 = '1' report "bad sum" severity error;
             assert w_led1 = '0' report "bad carry" severity error;
-		-- TODO:  rest of test plan
+         w_sw1 <= '1'; w_sw0 <= '1'; wait for 10 ns;
+            assert w_led0 = '0' report "bad sum" severity error;
+            assert w_led1 = '0' report "bad carry" severity error;
 		
 		wait; -- wait forever
 	end process;	
